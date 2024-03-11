@@ -212,7 +212,7 @@ onUnmounted(function() {
 .group-enter-from,
 .group-leave-to {
   opacity: 0;
-  transform: scale(.5);
+  transform: translate3d(0px, 30px, 0);
 }
 
 .group-leave-active {
