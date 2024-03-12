@@ -20,7 +20,7 @@ router.onchange("/", function() {
 });
 
 onMounted(function() {
-  router.push({
+  !router.currentPath && router.push({
     title: "base",
     path: "/"
   });
