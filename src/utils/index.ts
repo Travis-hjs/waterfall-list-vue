@@ -28,13 +28,13 @@ export function randomText(min: number, max: number) {
 
 interface RouterChangeOptions {
   /** 路由标题 */
-  title: string
+  title?: string
   /** 路由路径 */
   path: string
   /** 路由传参对象 */
-  data: Record<string, any>
+  data?: Record<string, any>
   /** 路由传参`?`后面的参数对象 */
-  params: Record<string, any>
+  params?: Record<string, any>
 }
 
 /**

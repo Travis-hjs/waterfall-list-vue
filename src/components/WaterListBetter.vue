@@ -3,7 +3,7 @@
     <button :disabled="page.loading" @click="getData">{{ page.loading ? '加载中..' : '加载更多'}}</button>
     <button :disabled="page.loading" @click="refresh">{{ page.loading ? '加载中..' : '重新获取'}}</button>
     <button @click="page.move = !page.move">{{ page.move ? '关闭动画' : '开启动画'}}</button>
-    <a class="link" href="#/better">进阶版</a>
+    <a class="link" href="#/">基础版</a>
   </div>
   <TransitionGroup :name="page.move ? 'group' : ''" tag="div" class="water-list flex" ref="wrapEl">
     <TransitionGroup :name="page.move ? 'group' : ''" tag="div" class="water-list-column" v-for="column in pageList" :key="'col-' + column.id" :data-height="column.height">
