@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import WaterList from "./components/WaterList.vue";
 import WaterListBetter from "./components/WaterListBetter.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { router } from "./utils";
 
 const pageType = ref<""|"base"|"better">("");
@@ -18,6 +18,13 @@ router.onchange("/better", function() {
 router.onchange("/", function() {
   pageType.value = "base";
 });
+
+onMounted(function() {
+  router.push({
+    title: "base",
+    path: "/"
+  });
+})
 
 </script>
 
