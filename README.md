@@ -4,6 +4,8 @@
 
 - 当前项目`node.js`版本要求`18.x`或更高版本
 
+[预览地址](https://huangjingsheng.gitee.io/hjs/waterfall/#/better)
+
 ## Project Setup
 
 ```sh
