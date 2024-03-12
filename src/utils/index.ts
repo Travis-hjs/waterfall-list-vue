@@ -141,6 +141,7 @@ function moduleRouter() {
     get params() {
       return currentPathParams;
     },
+    currentPath,
     /**
      * 路由重定向
      * @param options 可以传字符串：`/home`
