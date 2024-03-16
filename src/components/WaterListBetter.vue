@@ -116,8 +116,8 @@ async function setImageSize(list: ItemList): Promise<ItemList> {
       img.src = item.photo;
       function complete<T extends { width: number, height: number }>(target: T) {
         count++;
-        item.width = img.width;
-        item.height = img.height;
+        item.width = target.width;
+        item.height = target.height;
         if (count >= total) {
           resolve(list);
         }
