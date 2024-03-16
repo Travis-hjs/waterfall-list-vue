@@ -11,6 +11,11 @@ export interface ItemInfo {
   width?: number
   /** 图片的高度，前端获取图片信息之后设置 */
   height?: number
+  /** 
+   * 当前节点的所在列的高度
+   * - 非列的总高度，只是调试用
+   */
+  currentColumnHeight?: number
 }
 
 export type ItemList = Array<ItemInfo>;
