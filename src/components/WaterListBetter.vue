@@ -52,21 +52,31 @@ function setColumnList(addList: ItemList, reset = false) {
     result = new Array(page.column).fill(0).map((_, index) => ({ index: index, list: [], height: 0 }));
     cacheList = [];
   }
-  addList.forEach(item => {
+  addList.forEach(function(item, index) {
     result.sort((a, b) => a.height - b.height);
-    // console.log("数据添加前 >>", item.id, result.map(ele => ({ index: ele.index, height: ele.height })));
-    const target = result[0]; 
+    const target = result[0];
+    // console.log("target-index >> ", target.index, "target-height >> ", target.height);
     target.height += item.height!;
     item.currentColumnHeight = target.height; // TODO: 设置一个调试值
+    // console.log("target-height >> ", target.height);
+    // (((index + 1) % page.column) === 0) && console.log("-----------------------------------------");
     target.list.push(item);
-    // console.log("数据添加后 >>", item.id, result.map(ele => ({ index: ele.index, height: ele.height })));
-    // console.log("--------------------");
-
   });
   cacheList = cacheList.concat(addList);
   // 最后排一下原来的顺序再返回即可
   result.sort((a, b) => a.index - b.index);
   page.columnList = result;
+}
+
+/**
+ * 四舍五入带小数位
+ * @param value 
+ * @param precision 小数位
+ */
+function round(value: number, precision: number) {
+  return Math.round((+value + "e" + precision) as any) / Math.pow(10, precision);
+  // same as:
+  // return Number(Math.round(+value + "e" + precision) + "e-" + precision);
 }
 
 /**
@@ -82,8 +92,11 @@ async function setImageSize(list: ItemList): Promise<ItemList> {
       img.src = item.photo;
       function complete<T extends { width: number, height: number }>(target: T) {
         count++;
-        item.width = target.width;
-        item.height = target.height;
+        // TODO: 关键！！！这里要将所有图片都按照一个比例去计算高度
+        const width = 100;
+        const ratio = target.width / width;
+        item.width = width;
+        item.height = round(target.height / ratio, 2);
         if (count >= total) {
           resolve(list);
         }
