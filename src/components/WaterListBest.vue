@@ -76,7 +76,7 @@ onMounted(function() {
     } else if (rect.width > 600) {
       page.column = 2;
     }
-    el.style.setProperty("--cloumn", page.column.toString());
+    el.style.setProperty("--column", page.column.toString());
   });
   observer.observe(el);
 });
@@ -89,9 +89,9 @@ onUnmounted(function() {
 <style lang="scss">
 @import url("./main.scss");
 .waterfall-box {
-  --cloumn: 4;
+  --column: 4;
   display: grid;
-  grid-template-columns: repeat(var(--cloumn), 1fr);
+  grid-template-columns: repeat(var(--column), 1fr);
   grid-gap: 0 20px;
   padding: 20px 0;
   align-items: end;
