@@ -33,7 +33,7 @@ function setItemStyle(img: HTMLImageElement, index: number) {
   function update() {
     const item = img.parentElement;
     if (!item) return;
-    const gapRows = index >= page.column ? 8 : 0;
+    const gapRows = index >= page.column ? (page.column * 2) : 0;
     const rows = Math.ceil(item.clientHeight / 2) + gapRows;
     item.style.gridRowEnd = `span ${rows}`;
   }
